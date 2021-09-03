@@ -1,0 +1,89 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> Recruit Panel </title>
+{% endblock %}
+
+{% block hr %}
+			<!-- Recruit -->
+				<div class="section-master" style="display:non">
+					
+				
+					<div class="task_list">
+						<div class="disk-home-plate">
+						
+							<div class="disk-home">
+								<div class="disk-section">
+									<div class="3peec">
+										<div class="dheader">
+											<div class="text-d">Job And Vacancy</div>
+										</div>
+										<div class="dbody">
+											<div class="body-d-container">
+													
+												<div class="display-sticker">
+													<div class="aat">
+														<span class="good-tex">
+															<span>Total Jobs</span>
+															<span>460</span>
+														</span>
+													</div>
+													<div class="aab">
+														<div class="aat- inln-">
+															<span class="primary-tex">
+																<span>Filled </span>
+																<span>410</span>
+															</span>
+														</div>
+														<div class="aat- inln-">
+															<span class="bad-tex">
+																<span>Vacancy</span>
+																<span>50</span>
+															</span>
+														</div>
+													</div>
+												</div>	
+												
+											</div>
+										</div>
+										<div class="dfooter clear">
+											<div class="text-d crab-x">
+												
+												<a class="text-d-btn d-btn-link" href="{% url 'hrm_recruit_vacancy' %}"><span>View or Create Job </span> <i class="fa fa-angle-right"></i></a>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="disk-home" style="display:none">
+								<div class="disk-section">
+									<div class="3peec">
+										<div class="dheader">
+											<div class="text-d">Rrecruit Candidate</div>
+										</div>
+										<div class="dbody">
+											<div class="body-d-container"></div>
+										</div>
+										<div class="dfooter clear">
+											<div class="text-d crab-x">
+												
+												<a class="text-d-btn d-btn-link" href="{% url 'hrm_recruit_hire' %}"><span>Recruit </span> <i class="fa fa-angle-right"></i></a>
+												
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+					
+					
+				
+					
+				</div>
+			<!-- Recruit End -->
+				
+{% endblock %}

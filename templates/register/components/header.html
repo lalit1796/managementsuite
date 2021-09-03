@@ -1,0 +1,15 @@
+{% load static %}
+<div class="hr-header-panel common-dime-header">
+	<div class="clear unform-dime-for-header">
+		<div class="hrader-containment lfloat">
+			<a href="{% url 'home' %}">
+				<img src="{% static 'logo/shibhansh-croped-trp.png' %}" class="logo-on-header" alt="Shibhansh Logo File"/>
+			</a>
+		</div>
+		<div class="rfloat">
+			{%  include '_components/logger_section_in_header.html'%}
+		</div>
+	</div>
+</div>
+
+

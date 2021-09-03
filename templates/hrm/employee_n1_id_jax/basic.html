@@ -1,0 +1,65 @@
+
+<div id="tuzbasic" class="section-basi">
+	<div class="_d_tools clear">
+		<a id="_btn_emp_jax_1_edit" href="#basic.edit" class="intr_btn rfloat">Edit</a>
+	</div>
+
+	<table class="ptt" cellspacing=0>
+		<tbody class="ptb">
+				<tr class="ptr">
+					<td class="ptd">Full Name</td>
+					<td class="ptd">{{emp.First_name}} {{emp.Middle_name|default_if_none:""}} {{emp.Last_name}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Father's Name</td>
+					<td class="ptd">{{emp.Father_name}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Mother's Name</td>
+					<td class="ptd">{{emp.Mother_name|default_if_none:"--"}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Marital Status</td>
+					<td class="ptd">{{emp.Marital_status}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Spouse Name</td>
+					<td class="ptd">{{emp.Spouse_name|default_if_none:"--"}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Date of birth</td>
+					<td class="ptd">{{emp.Date_of_birth}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Gender</td>
+					<td class="ptd">{{emp.Gender}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Phone</td>
+					<td class="ptd">{{emp.Phone1}}{{emp.Phone2|default_if_none:""}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Email</td>
+					<td class="ptd">{{emp.Email}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Current Address</td>
+					<td class="ptd">{{emp.Current_address}}, {{emp.Current_address_city}}, {{emp.Current_address_state}}, {{emp.Current_address_pin}}</td>
+				</tr>
+					<tr class="ptr">
+					<td class="ptd">Permanent Address</td>
+					<td class="ptd">{{emp.Permanent_address|default_if_none:"--"}}, {{emp.Permanent_address_city|default_if_none:"--"}}, {{emp.Permanent_address_state|default_if_none:"--"}}, {{emp.Permanent_address_pin|default_if_none:"--"}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Joining Date</td>
+				<td class="ptd">{{emp.Date_of_joining}}</td>
+			</tr>
+																	
+		</tbody>
+	</table>
+	<script id="ajax_url_list">
+								
+	
+	erp.kill($("#ajax_url_list"))	
+	</script>
+</div>

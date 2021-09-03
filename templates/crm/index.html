@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block header %}
+
+	<!-- Header HRM Start -->
+	{%  include 'crm/header.html'%}
+	<!-- Header HRM End -->
+	
+{% endblock %}
+
+{% block content %} 
+
+	<!-- Options Start-->
+	{%  include 'crm/panel.html'%}
+	<!-- Options End -->
+	
+	<!-- Main Content Start-->
+	{%  include 'crm/panel.html'%}
+	<!-- Main Content End-->
+	
+{% endblock %}

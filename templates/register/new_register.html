@@ -1,0 +1,118 @@
+{% extends 'register/_register_base.html'  %}
+{% load static %}
+
+
+
+{% block register_title %}
+	
+	<title> Register </title>
+	
+{% endblock %}
+
+{% block register %}
+	
+	<h1> <center>Create New Register</center> </h1>
+	
+	<div class="new_reg">
+	
+		<form id="newRegForm"class="clear">
+			<div class="sect-reg">
+				<label for="register" class="regLabel">Name of the register</label>
+				<input type="text" name="register" class="regInp regName"/>
+			</div>
+			<div class="sect-reg">
+				<label for="location" class="regLabel">Location of staff</label>
+				<input type="text" name="location" class="regInp regLoc"/>
+			</div>
+			<div class="sect-reg hidden">
+				<label for="ids" class="regLabel"></label>
+				<input type="text" name="ids" class="regInp regLoc"/>
+			</div>
+			<div class="">
+				<button type="submit">Create</button>
+			</div>
+		</form>
+		
+		<div class="empmark">
+			<div class="emptools">
+				
+			</div>
+			<div class="emb-panel">
+				<div class="right-pro-panel">
+					<div class="list-sec">
+						<div class="headgg">Selected List</div>
+						<div class="list-body">
+							<table>
+								<tbody id="bdlist">
+									<tr>
+										<td></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			
+				<div class="emb-sec">
+					<table id="employeeAvailableTable" class="_t_b" cellspacing=0>
+						<thead>
+							<tr id="" class="_t_r _table_head">
+								<th class="tiknic">Serial</th>
+								<th class="tiknic">Emp Id</th>
+								<th class="tiknic">Name</th>
+								<th class="tiknic">Father's Name</th>
+								<th class="tiknic">Select</th>
+							</tr>
+						</thead>
+						<tbody id="sigmaBdy">
+							{% for e in emp %}
+							
+							<tr class="data-tr-tow _t_r tr_patt">
+								<td class="td-cell">{{forloop.counter}}</td>
+								<td class="td-cell">{{e.id}}</td>
+								<td class="td-cell ename">{{e.First_name}}, {{e.Last_name}}</td>
+								<td class="td-cell">{{e.Father_name}}</td>
+								<td class="td-cell">
+									<input id="{{e.id}}" class="yesbox" type="checkbox"/>
+									<button class="select-btn">Select</button>
+								</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					<script>
+							
+							$(document).ready(function(){
+								$(".select-btn").click(function(){
+									var s = $(this).siblings("input");
+									s.click();
+									if(s.is(':checked')){
+										$(this).addClass("yyes")
+										$(this).html("Remove");
+										$("#bdlist").append("<tr class='upma u"+s.attr('id')+"'><td>"+s.attr('id')+"</td><td></td></tr>")
+									}
+									else{
+										$(this).removeClass("yyes")
+										$(this).html("Select");
+										$(".upma.u"+s.attr('id')).remove();
+									}
+									
+								});
+								
+								
+
+							});
+						
+					</script>
+				</div>
+			</div>	
+		</div>
+	
+	</div>
+	<div class="botm-fixed-platform">
+		<div class="botm-fixed-sec">
+			<button>Create</button>
+		</div>
+	</div>
+	
+{% endblock %}

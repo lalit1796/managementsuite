@@ -1,0 +1,116 @@
+{% load static %}
+
+<style>
+img.pdf-logo {
+    width: 240px;
+}
+.w100{width:100%;}
+.img-dim {
+    width: 150px;
+    height: 160px;
+    background: grey;
+}
+.top-td {
+    vertical-align: top;
+}
+.header-pdf.w100 {
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    background: #454444;
+    padding: 4px 0;
+}
+.pdf-td {
+    display: table-cell;
+}
+.pdf-tr {
+    display: table-row;
+}
+.pdf-tbbody,.pdf-tab {
+    display: table;
+}
+</style>
+<div class="pdf">
+<div id='PDFcontent' style="width:600px">
+
+	<div class="pdf-section">
+		<div class="pdf-tab w100 top-1">
+			<div class="pdf-tbbody">
+				<div class="pdf-tr top-tr-1">
+					<div class="pdf-td top-td">
+						<img src="{% static 'logo/small.jpg' %}" style="width:40%" class="pdf-logo" alt="Shibhansh Logo File"/>
+					</div>
+					<div class="pdf-td top-td">
+						<div class="img-dim"></div>
+					</div>
+				</div>
+				<div class="pdf-tr">
+					<div class="pdf-td">Employee Information | {{emp.id}}</div>
+					<div class="pdf-td"></div>
+				</div>
+			</div>
+		</div>
+		<div class="header-pdf w100">
+			Employee Information
+		</div>
+		<div class="pdf-tab w100 top-2">
+			<div class="pdf-tbbody">
+				<div class="pdf-tr">
+					<div class="pdf-td"></div>
+					<div class="pdf-td"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+	 
+
+	<p>Content to be written in PDF can be placed in this DIV!</p>
+
+</div>
+<div id="elementH"></div>
+<div id='ignoreContent'>
+
+<p>Only for display and not in pdf</p>
+
+</div>
+<button id='gpdf'>Generate PDF</button>	
+<script>
+
+
+// Save the PDF
+$("#gpdf").click(function(){
+	var doc = new jsPDF();
+	doc.setFont("helvetica");
+/*	
+	var elementHTML = $('#PDFcontent').html(); // for fromHTML
+	var specialElementHandlers = {
+		'#elementH': function (element, renderer) {
+			return true;
+		}
+	};
+	doc.fromHTML(elementHTML, 15, 15, {
+		'width': 500,
+		'elementHandlers': specialElementHandlers
+	},function(a){doc.save('sample-document.pdf')});
+*/	
+
+	var ele = document.getElementById("PDFcontent");
+	doc.text(20, 20, 'Hello world.');
+	doc.addHTML(ele,10,10,{},function(a){
+		console.log(a)
+		doc.save('TestIn.pdf');
+	});
+	
+	var ele = document.getElementById("PDFcontent");
+	html2canvas(ele).then(canvas => {
+		let pdf = new jsPDF('p', 'mm', 'a4');
+		pdf.addImage(canvas.toDataURL('image/png'), 'PNG', 0, 0, 211, 298);
+		pdf.save("lsp.pdf");
+	});
+	
+});
+
+</script>
+
+
+</div>

@@ -1,0 +1,108 @@
+
+					
+					<!-- Candidates -->
+					<div class='section-master' style="display:noe" >
+						
+						<div class="section clear tools">
+							<a href=".?bulk=true" class="snip-item df-gud lfloat">
+								<div class="snip-con"><i class="fa fa-user-plus"></i>Bulk Hire</div>
+							</a>
+							<a href="{% url 'hrm_addNewEmployee' %}" class="snip-item df-gud lfloat">
+								<div class="snip-con"><i class="fa fa-user-plus"></i>Bulk Hire</div>
+							</a>
+							
+							<div class="snip-item- df-search rfloat">
+								<div class="inpan">
+									<span><i class="fa fa-search"></i></span>
+									<span><input id="employeeSearch" type='text' placeholder="Filter" class="table_search"/></span>
+								</div>
+							</div>
+						</div>
+						
+								
+						<div class="section employee-table">
+						
+							<div class="_table">
+	
+								<table id="employeeViewTable" class="_t_b " cellspacing=0>
+									<thead>
+										<tr id="" class="_t_r _table_head">
+											
+											<th class="_t_d _thead b001" style="display:">Serial</th>
+											<th class="_t_d _thead b002" style="display:">Photo</th>
+											<th class="_t_d _thead b003" style="display:">First Name, Last Name</th>
+											<th class="_t_d _thead b004" style="display:">Father's Name</th>
+											<th class="_t_d _thead b005" style="display:">Application Id.</th>
+											<th class="_t_d _thead b006" style="display:">Date</th>
+											<th class="_t_d _thead b007" style="display:">Contact</th>
+											<th class="_t_d _thead b009" style="display:">Priority Index</th>
+											<th class="_t_d _thead b010" style="display:">Action</th>
+											
+											
+										</tr>
+									</thead>
+									<tbody>
+									
+									{% for e in emp %}
+										<tr class="_t_r tr_patt">
+											<td class="_t_d _tcell b001" style="display:">{{forloop.counter}}</td>
+											<td class="_t_d _tcell b002" style="display:">
+												<div class=" profil-image ">Photo</div>
+											</td>
+											<td class="_t_d _tcell b003" style="display:">
+												<a href="{% url 'hrm_employeeProfile' id=e.id %}" class="primary_anchor high_txt">{{e.First_name}}, {{e.Last_name}}</a>
+											</td>
+											<td class="_t_d _tcell b004" style="display:">
+												<span>{{e.Father_name}}</span>
+											</td>
+											<td class="_t_d _tcell b005" style="display:">{{e.id}}</td>
+											<td class="_t_d _tcell b006" style="display:">DGM</td>
+											<td class="_t_d _tcell b007" style="display:">
+												<div>{{e.Phone1}}</div>
+												<div>{{e.Phone2|default_if_none:""}}</div>
+												<div>{{e.Email}}</div>
+											</td>
+											<td class="_t_d _tcell good_cell b009" style="display:">Active</td>
+											<td class="_t_d _tcell b010" style="display:">
+												<select>
+													<option>Move to Watchlist</option>
+													<option>Move to Interview List</option>
+													<option>Remove Application</option>
+												</select>
+											</td>
+											
+											
+										</tr>
+									
+									{% endfor %}
+										
+										
+									</tbody>
+								</table>
+								
+				
+								<div id="table_msg_below"></div>
+							</div>
+						</div>
+					</div>
+				
+					{{set.Setting|json_script:'view-setting'}}
+					<script>
+						
+						erp.tableFilter($('#employeeSearch'),$('#employeeViewTable tbody'),$('#employeeViewTable'),"No result available for this filter...")
+							
+					   $(document).ready(function(){
+					   $("#ExportCurrentView").click(function(){
+						   $("#employeeViewTable").tableHTMLExport({
+
+							  type:'csv',
+							  filename: 'EmployeeRoll.csv'
+
+							});
+						   console.log("EmployeeRoll downloaded...");
+						});
+					});
+					</script>
+				<!-- Candidates End -->
+
+		

@@ -1,0 +1,172 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> Create New Job </title>
+{% endblock %}
+
+{% block hr %}
+			<!-- Recruit New -->
+				<div class="section-master hire-job-code-master" style="display:non">
+					
+					<div class="hopper-panel clear">
+						
+						<a class="push-flot">
+							<span class="__h17">JOB CODE</span> 
+							</span class="__d1">{{cod.Job_code}}</span>
+						</a>
+			
+						<a href="#edit" id="_btn_rec_jax_4" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-gear"></i> Edit
+						</a>
+						<a href="#statistics" id="_btn_rec_jax_3" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-area-chart"></i> Stats
+						</a>
+						<a href="#new_candidate" id="_btn_rec_jax_2" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-user-plus"></i> Add New
+						</a>
+						<a href="#all_candidates" id="_btn_rec_jax_1" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-users"></i> All Candidates
+						</a>
+						<a href="{% url 'hrm_recruit_hire_code' code=cod.Job_code %}" id="_btn_rec_jax_1" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-home"></i> Home	
+						</a>
+					</div>
+					
+					
+					
+						<!-- Candidates -->
+						<div id="jax-response-body-rec">
+							<div id="infor-body">
+								<div class="job-post-action-body" style="">
+									<div class="clear">
+										<div class="_job-post-pin lfloat">
+											<table class="secure-tab">
+												<tbody>
+													<tr>
+														<td>
+															<div class="__b9">Total Applicants</div>
+														</td>
+														<td>
+															<div class="__b7">546</div>
+														</td>
+														
+													<tr>
+													<tr>
+														<td>
+															<div class="__b9">Watch List</div>
+														</td>
+														<td>
+															<div class="__b7">542</div>
+														</td>
+														
+													<tr>
+													<tr>
+														<td>
+															<div class="__b9">New Applications</div>
+														</td>
+														<td>
+															<div class="__b7">4</div>
+														</td>
+													
+													<tr>
+												</tbody>
+											</table>
+										</div>
+									</div>	
+								</div>
+							</div>
+							
+							<script id="ajax_url_list">
+								console.log("{{cod.Job_code}}");
+								erp.o.job_code="{{cod.Job_code}}";
+								erp.ur.re_can="{% url 'hrm_jax_rec_cand' %}";
+								erp.ur.ne_can="{% url 'hrm_jax_rec_add' %}";
+								erp.ur.st_can="{% url 'hrm_jax_rec_stats' %}";
+								erp.ur.ed_can="{% url 'hrm_jax_rec_edit' %}";
+								
+								erp.myObject($("#_btn_rec_jax_1"),'Button Code RECJAX1',function(b,t){
+														
+														t.btn.recjax1=b;
+														t.btn.recjax1.on('click',function(e){
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l)
+															t.jax("json",{},"get",t.ur.re_can,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+												});
+								erp.myObject($("#_btn_rec_jax_2"),'Button Code RECJAX2',function(b,t){
+														
+														t.btn.recjax2=b;
+														t.btn.recjax2.on('click',function(e){
+															
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l);
+															t.jax("json",{},"get",t.ur.ne_can,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+													
+												});
+												
+								erp.myObject($("#_btn_rec_jax_3"),'Button Code RECJAX3',function(b,t){
+														
+														t.btn.recjax3=b;
+														t.btn.recjax3.on('click',function(e){
+														
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l);
+															t.jax("json",{},"get",t.ur.st_can,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+												});
+
+								erp.myObject($("#_btn_rec_jax_4"),'Button Code RECJAX4',function(b,t){
+														
+														t.btn.recjax4=b;
+														t.btn.recjax4.on('click',function(e){
+														
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.ed_can,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+												});
+
+								
+								erp.kill($("#ajax_url_list"))
+								
+							</script>
+							
+						</div>
+					
+					<!-- Candidates End -->
+
+					
+				</div>
+			<!-- Recruit New End -->
+				
+{% endblock %}  .

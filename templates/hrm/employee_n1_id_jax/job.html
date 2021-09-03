@@ -1,0 +1,42 @@
+
+<div id="tuzbasic" class="section-basi">
+	<div class="_d_tools clear">
+		<a id="_btn_emp_jax_1_edit" href="#basic.edit" class="intr_btn rfloat">Edit</a>
+	</div>
+
+	<table class="ptt" cellspacing=0>
+		<tbody class="ptb">
+				<tr class="ptr">
+					<td class="ptd">Job Title</td>
+					<td class="ptd">{{emp.Job_title}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Name</td>
+					<td class="ptd">{{emp.Nominee_name|default_if_none:"--"}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Relation</td>
+					<td class="ptd">{{emp.Nominee_relation|default_if_none:"--"}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Phone</td>
+					<td class="ptd">{{emp.Nominee_contact_phone1|default_if_none:"--"}}, {{emp.Nominee_contact_phone2|default_if_none:"--"}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Email</td>
+					<td class="ptd">{{emp.Nominee_contact_email|default_if_none:"--"}}</td>
+				</tr>
+				<tr class="ptr">
+					<td class="ptd">Address</td>
+					<td class="ptd">{{emp.Nominee_contact_address|default_if_none:"--"}}</td>
+				</tr>
+																	
+																	
+		</tbody>
+	</table>
+	<script id="ajax_url_list">
+								
+	
+	erp.kill($("#ajax_url_list"))	
+	</script>
+</div>

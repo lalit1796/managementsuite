@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block head %}
+
+{% endblock %}
+
+{% block header %}
+
+	<!-- Header HRM Start -->
+	{%  include 'records/header.html'%}
+	<!-- Header HRM End -->
+	
+{% endblock %}
+
+{% block content %} 
+
+	<!-- Options Start-->
+	{%  include 'records/panel.html'%}
+	<!-- Options End -->
+	
+	<!-- Main Content Start-->
+	{%  include 'records/panel.html'%}
+	<!-- Main Content End-->
+	
+{% endblock %}

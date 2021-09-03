@@ -1,0 +1,64 @@
+{% load static %}<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+	
+	<link rel="icon" type="image/png" sizes="32x32" href="{% static 'fevico/favicon-32x32.png' %}">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta name="charset" content="utf-8"/>
+	<script src="{% static 'js/plug.js' %}"/></script>
+	<script src="{% static 'js/jscript.js' %}"/></script>
+	<script src="//unpkg.com/force-graph"></script>
+	
+	{% block head %}
+
+	
+	
+	
+	{% endblock %}
+	
+
+	
+	
+	<link rel="stylesheet" type="text/css" href="{% static 'style.css' %}"/>
+	<link rel="stylesheet" type="text/css" href="{% static 'plug.css' %}?"/>
+	
+	
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
+	<link href="https://fonts.googleapis.com/css?family=Questrial&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Marck+Script&display=swap" rel="stylesheet">
+	
+	
+
+</head>
+<body>
+
+
+
+
+
+<div class="boxed">
+
+	<div class="header-co">
+	
+		{% block header %}
+
+			<!-- header -->
+			 
+		{% endblock %}
+		
+	</div>
+	
+	<div class="meg-container">
+	
+		{% block content %}
+			replace me
+		{% endblock %}
+
+	</div>
+
+
+</div>	
+
+</body>
+</html>

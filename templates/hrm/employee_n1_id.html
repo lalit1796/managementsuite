@@ -1,0 +1,380 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> {{ emp.First_name }} {{ emp.Last_name }}</title>
+{% endblock %}
+
+{% block hr %}
+				
+				
+				<!-- Employee Profile -->
+				
+				<div class="section-master"	>
+					<div class="section tag-btn-sec whitebg clear">
+						<a href="{% url 'hrm_employee' %}" title="Back" class="snip-item df-gud lfloat">
+							<div class="snip-con"><i class="fa fa-long-arrow-left"></i> Back</div>
+						</a>
+						<a href="{% url 'hrm_employee' %}" title="View Employee" class="snip-item df-gud lfloat">
+							<div class="snip-con"><i class="fa fa-user-plus"></i> View Employee</div>
+						</a>
+					</div>
+					<div class="section dig-in-sec">
+						<div class="picular" style="background-image:url({% static 'bgs/texture2.jpg' %})"></div>
+						<div class="circy whitebg">
+							<div class="circy-pos">
+								<div class="circy-con">
+									<div class="profileEmp">
+										<div class="pimg">
+											<div class="pimgcontainer">
+												<image src="{% static 'profile_images/photo1.jpg' %}" class="progfile-image"/>
+											</div>
+											<div class="li-div-cont">
+												<div class="li-divi">Contact</div>
+												<div class="li-pr">
+													<span class="icn-spc"><i class="fa fa-envelope"></i> </span>
+													<span class="icn-txt">{{ emp.Email }}</span>
+												</div>
+												<div class="li-pr">
+													<span class="icn-spc"><i class="fa fa-mobile-phone"></i>  </span>
+													<span class="icn-txt">{{ emp.Phone1 }} {{emp.Phone2|default_if_none:""}}</span>
+												</div>
+												<div class="li-divi"></div>
+												<div class="li-pr">
+													<span class="icn-spc"><i class="fa fa-briefcase"></i> </span>
+													<span class="icn-txt"><span class="li-lbl">DOJ:</span> {{ emp.Date_of_joining }}</span>
+												</div>
+												<div class="li-pr">
+													<span class="icn-spc"><i class="fa fa-sitemap"></i> </span>
+													<span class="icn-txt"><span class="li-lbl">Department:</span> {{ emp.Department }}</span>
+												</div>
+												<div class="li-pr">
+													<span class="icn-spc"><i class="fa fa-plane"></i> </span>
+													<span class="icn-txt"><span class="li-lbl">Work Location:</span> <span>{{ emp.Work_location }}</span></span>
+												</div>
+												<div class="li-divi">Reporting Officer</div>
+												<div class="li-pr">
+													<span class="icn-spc"><i class="fa fa-tasks"></i> </span>
+													<span class="icn-txt">{{ emp.Reposting_officer }}</span>
+												</div>
+											</div>
+										</div>
+										<div class="profile-matter">
+										</div>
+										<div class="yet-another yet-another-sec">
+											<div class="yet-table">
+												<div class="pheader">
+													<div class="phead-content">
+														<div class="pname">{{ emp.First_name }} {{ emp.Middle_name|default_if_none:"" }} {{ emp.Last_name }}</div>
+														<div class="pdesig">{{ emp.Job_title }}</div>
+													</div>
+												</div>
+												<div class="pbody">
+													<div class="pcont">
+														<div class="pmenu  baseline">
+															<a href="{% url 'hrm_employeeProfile' id=emp.id%}" class="pmenu-item tuzbasic b-selected">Profile</a>
+															<a href="#basic" id="_btn_emp_jax_1" class="pmenu-item tuzbasic">Basic</a>
+															<a href="#emergency" id="_btn_emp_jax_2"  class="pmenu-item tuzEmergeny">Emergency</a>
+															<a href="#nominee" id="_btn_emp_jax_3"  class="pmenu-item tuzNominee">Nominee</a>
+															<a href="#family_details" id="_btn_emp_jax_4"  class="pmenu-item tuzFamily">Family</a>
+															<a href="#document" id="_btn_emp_jax_5"  class="pmenu-item tuzSocial">Documents</a>
+															<a href="#job_details" id="_btn_emp_jax_6"  class="pmenu-item tuzInfo">Job</a>
+															<a href="#employement" id="_btn_emp_jax_7"  class="pmenu-item tuzWage">Employement</a>
+															
+														</div>
+													</div>
+													<div class="section" id="jax-response-body-emp">
+														
+														<div id="tuzSocial" class="section-basi hidden">
+															<!-- Social Numbers -->
+															<table class="ptt" cellspacing=0>
+																<tbody class="ptb">
+																	<tr class="ptr">
+																		<td class="ptd">Aadhaar Number</td>
+																		<td class="ptd">{{emp.Aadhaar_number|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">PAN Number</td>
+																		<td class="ptd">{{emp.PAN_number|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Voter Id</td>
+																		<td class="ptd">{{emp.Voter_id|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Driver License</td>
+																		<td class="ptd">{{emp.Driver_license|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Passport Number</td>
+																		<td class="ptd">{{emp.Passport|default_if_none:"--"}}</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div id="tuzEmergeny" class="section-basi hidden">
+															<!-- Emergency -->
+															<table class="ptt" cellspacing=0>
+																<tbody class="ptb">
+																	<tr class="ptr">
+																		<td class="ptd">Name</td>
+																		<td class="ptd">{{emp.Emergency_contact_name}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Relation</td>
+																		<td class="ptd">{{emp.Emergency_contact_relation}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Phone</td>
+																		<td class="ptd">{{emp.Emergency_contact_phone1}}, {{emp.Emergency_contact_phone2|default_if_none:" "}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Email</td>
+																		<td class="ptd">{{emp.Emergency_contact_email|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Address</td>
+																		<td class="ptd">{{emp.Emergency_contact_address|default_if_none:"--"}}</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div id="tuzNominee" class="section-basi hidden">
+															<!-- Nominee -->
+															<table class="ptt" cellspacing=0>
+																<tbody class="ptb">
+																	<tr class="ptr">
+																		<td class="ptd">Name</td>
+																		<td class="ptd">{{emp.Nominee_name|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Relation</td>
+																		<td class="ptd">{{emp.Nominee_relation|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Phone</td>
+																		<td class="ptd">{{emp.Nominee_contact_phone1|default_if_none:"--"}}, {{emp.Nominee_contact_phone2|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Email</td>
+																		<td class="ptd">{{emp.Nominee_contact_email|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Address</td>
+																		<td class="ptd">{{emp.Nominee_contact_address|default_if_none:"--"}}</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div id="tuzInfo" class="section-basi hidden">	
+															<!-- Job Information -->
+															<table class="ptt" cellspacing=0>
+																<tbody class="ptb">
+																	<tr class="ptr">
+																		<td class="ptd">Job Title</td>
+																		<td class="ptd">{{emp.Job_title}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Name</td>
+																		<td class="ptd">{{emp.Nominee_name|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Relation</td>
+																		<td class="ptd">{{emp.Nominee_relation|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Phone</td>
+																		<td class="ptd">{{emp.Nominee_contact_phone1|default_if_none:"--"}}, {{emp.Nominee_contact_phone2|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Email</td>
+																		<td class="ptd">{{emp.Nominee_contact_email|default_if_none:"--"}}</td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Address</td>
+																		<td class="ptd">{{emp.Nominee_contact_address|default_if_none:"--"}}</td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+														<div id="tuzWage" class="section-basi hidden">	
+															<!-- Job Stats -->
+															<table class="ptt" cellspacing=0>
+																<tbody class="ptb">
+																<tr class="ptr">
+																		<td class="ptd">Monthly Wage</td>
+																		<td class="ptd"><span id="__wage__">*****</span><span id="_wage_btn" class="micro-btn" ><i class="fa fa-eye"></i></span></td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">PF Number</td>
+																		<td class="ptd"><span id="__wage__">*****</span><span id="_wage_btn" class="micro-btn" ><i class="fa fa-eye"></i></span></td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">ESI Number</td>
+																		<td class="ptd"><span id="__wage__">*****</span><span id="_wage_btn" class="micro-btn" ><i class="fa fa-eye"></i></span></td>
+																	</tr>
+																	<tr class="ptr">
+																		<td class="ptd">Attendance Register</td>
+																		<td class="ptd"><span id="__wage__">Not Assigned</span></td>
+																	</tr>
+																</tbody>
+															</table>
+														</div>
+													</div>
+												</div>
+											</div>
+										</div>
+								
+									
+									</div>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div>
+				<!-- Employee Profile End-->
+				<!-- Employee Profile 2-->
+				
+				<script id="ajax_url_list">
+								
+					erp.ur.bas_emp="{% url 'hrm_jax_employee_basic' id=emp.id %}";
+					erp.ur.eme_emp="{% url 'hrm_jax_employee_emergency' id=emp.id %}";
+					erp.ur.fam_emp="{% url 'hrm_jax_employee_family' id=emp.id %}";
+					erp.ur.emp_emp="{% url 'hrm_jax_employee_employement' id=emp.id %}";
+					erp.ur.nom_emp="{% url 'hrm_jax_employee_nominee' id=emp.id %}";
+					erp.ur.doc_emp="{% url 'hrm_jax_employee_documents' id=emp.id %}";
+					erp.ur.job_emp="{% url 'hrm_jax_employee_job' id=emp.id %}";
+					
+					
+					erp.myObject($("#_btn_emp_jax_1"),'Button Code EMPJAX1',function(b,t){var hash = window.location.hash;
+														t.btn.empjax1=b;
+														t.btn.empjax1.on('click',function(e){
+														 
+															var p = $("#jax-response-body-emp");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.bas_emp,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+															
+													});	
+													
+												});
+												
+					erp.myObject($("#_btn_emp_jax_2"),'Button Code EMPJAX2',function(b,t){var hash = window.location.hash;
+														t.btn.empjax1=b;
+														t.btn.empjax1.on('click',function(e){
+														 
+															var p = $("#jax-response-body-emp");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.eme_emp,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+															
+													});	
+												});
+												
+					erp.myObject($("#_btn_emp_jax_3"),'Button Code EMPJAX3',function(b,t){var hash = window.location.hash;
+														t.btn.empjax1=b;
+														t.btn.empjax1.on('click',function(e){
+														 
+															var p = $("#jax-response-body-emp");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.nom_emp,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+															
+													});	
+												});							
+												
+					erp.myObject($("#_btn_emp_jax_4"),'Button Code EMPJAX4',function(b,t){var hash = window.location.hash;
+														t.btn.empjax1=b;
+														t.btn.empjax1.on('click',function(e){
+														 
+															var p = $("#jax-response-body-emp");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.fam_emp,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+															
+													});	
+												});
+					
+					erp.myObject($("#_btn_emp_jax_5"),'Button Code EMPJAX5',function(b,t){var hash = window.location.hash;
+														t.btn.empjax1=b;
+														t.btn.empjax1.on('click',function(e){
+														 
+															var p = $("#jax-response-body-emp");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.doc_emp,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+															
+													});	
+												});	
+												
+					erp.myObject($("#_btn_emp_jax_6"),'Button Code EMPJAX6',function(b,t){var hash = window.location.hash;
+														t.btn.empjax1=b;
+														t.btn.empjax1.on('click',function(e){
+														 
+															var p = $("#jax-response-body-emp");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.job_emp,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+															
+													});	
+												});
+												
+					erp.myObject($("#_btn_emp_jax_7"),'Button Code EMPJAX7',function(b,t){var hash = window.location.hash;
+														t.btn.empjax1=b;
+														t.btn.empjax1.on('click',function(e){
+														 
+															var p = $("#jax-response-body-emp");
+															t.html(p,t.tpl.l);
+															t.jax("json",{'view':'album'},"get",t.ur.emp_emp,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+															
+													});	
+												});
+					
+					
+					erp.kill($("#ajax_url_list"))
+						
+				</script>
+				<!-- Employee Profile 2 End-->
+				<!-- Employee Forms and PDFs -->
+				<div style="display:none">
+				{% include 'hrm/components/forms/employee-face_sheet.html' %}
+				<div>
+				<!-- Employee Forms and PDFs -->
+				
+{% endblock %}

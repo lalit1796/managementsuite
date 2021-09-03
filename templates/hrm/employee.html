@@ -1,0 +1,233 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> Employee Manager </title>
+{% endblock %}
+
+{% block hr %}
+					<!-- Employee -->
+					<div class='section-master' style="display:noe" >
+						
+						<div class="section clear tools">
+							<a href="{% url 'hrm_addNewEmployee' %}" class="snip-item df-gud lfloat">
+								<div class="snip-con"><i class="fa fa-user-plus"></i> Add Employee</div>
+							</a>
+							<a href="#" class="snip-item df-cus lfloat">
+								<div class="snip-con" title="Settings"><i class="fa fa-gear"></i> Settings</div>
+							</a>
+							<a href="#" class="snip-item df-cus lfloat">
+								<div class="snip-con" title="Help"><i class="fa fa-question-circle-o"></i> Help</div>
+							</a>
+							<div class="snip-item- df-search rfloat">
+								<div class="inpan">
+									<span><i class="fa fa-search"></i></span>
+									<span><input id="employeeSearch" type='text' placeholder="Filter" class="table_search"/></span>
+								</div>
+							</div>
+						</div>
+						<div class="section clear filters">
+							<div class=" lfloat">
+								<div class="">
+									
+									<select data-code="view" data-placeholder="Choose a Country..." class="chosen-select" tabindex="-1" style="display: none; width:300px">
+										<option value="default">View Default</option>
+										<option value="custom">View Custom</option>
+									</select>
+									
+								</div>
+							</div>
+							<div class="snip-edt df-gud lfloat">
+								<div class="snip-con-filter"><i class="fa fa-wrench"></i> Create View</div>
+							</div>
+							<div class="snip-edt df-gud lfloat">
+								<div class="snip-con-filter"><i class="fa fa-cogs"></i> Edit View</div>
+							</div>
+							<div id="ExportCurrentView" class="snip-item-f df-gud rfloat">
+								<div class="snip-con-filter"><i class="fa fa-file-excel-o"></i> Export View</div>
+							</div>
+						</div>
+								
+						<div class="section employee-table">
+						
+							<div class="_table">
+	
+								<table id="employeeViewTable" class="_t_b " cellspacing=0>
+									<thead>
+										<tr id="" class="_t_r _table_head">
+											
+											<th class="_t_d _thead b001" style="display:none">Serial</th>
+											<th class="_t_d _thead b002" style="display:none">Photo</th>
+											<th class="_t_d _thead b003" style="display:none">First Name, Last Name</th>
+											<th class="_t_d _thead b004" style="display:none">Father's Name</th>
+											<th class="_t_d _thead b005" style="display:none">Empl. Id</th>
+											<th class="_t_d _thead b006" style="display:none">Job Title</th>
+											<th class="_t_d _thead b007" style="display:none">Phone</th>
+											<th class="_t_d _thead b008" style="display:none">Email</th>
+											<th class="_t_d _thead b009" style="display:none">Status</th>
+											<th class="_t_d _thead b010" style="display:none">Location</th>
+											
+											<th class="_t_d _thead c001" style="display:none">Mother's Name</th>
+											<th class="_t_d _thead c002" style="display:none">Marital Status</th>
+											<th class="_t_d _thead c003" style="display:none">Spouse Name</th>
+											<th class="_t_d _thead c004" style="display:none">Date Of Birth</th>
+											<th class="_t_d _thead c005" style="display:none">Gender</th>
+											<th class="_t_d _thead c006" style="display:none">Current Address</th>
+											<th class="_t_d _thead c007" style="display:none">Permanent Address</th>
+											
+											<th class="_t_d _thead d001" style="display:none">Adhaar Number</th>
+											<th class="_t_d _thead d002" style="display:none">PAN</th>
+											<th class="_t_d _thead d003" style="display:none">Voter Id</th>
+											<th class="_t_d _thead d004" style="display:none">Passport</th>
+											<th class="_t_d _thead d005" style="display:none">Driver's Licence</th>
+											
+											<th class="_t_d _thead e001" style="display:none">Bank Name</th>
+											<th class="_t_d _thead e002" style="display:none">Account Number</th>
+											<th class="_t_d _thead e003" style="display:none">IFSC Code</th>
+											
+											
+											<th class="_t_d _thead f002" style="display:none">Department</th>
+											<th class="_t_d _thead f003" style="display:none">Work Place</th>
+											<th class="_t_d _thead f004" style="display:none">Work Location</th>
+											<th class="_t_d _thead f005" style="display:none">Joining Date</th>
+											<th class="_t_d _thead f006" style="display:none">Reporting Officer</th>
+											<th class="_t_d _thead f007" style="display:none">Work Email</th>
+											<th class="_t_d _thead f008" style="display:none">Work Phone</th>
+											
+											<th class="_t_d _thead g001" style="display:none">Emergency Contact Name</th>
+											<th class="_t_d _thead g002" style="display:none">Emergency Contact Relation</th>
+											<th class="_t_d _thead g003" style="display:none">Emergency Contact Phone</th>
+											<th class="_t_d _thead g004" style="display:none">Emergency Contact Email</th>
+											<th class="_t_d _thead g005" style="display:none">Emergency Contact Address</th>
+											
+											<th class="_t_d _thead h001" style="display:none">Nominee Name</th>
+											<th class="_t_d _thead h002" style="display:none">Nominee Relation</th>
+											<th class="_t_d _thead h003" style="display:none">Nominee Phone</th>
+											<th class="_t_d _thead h004" style="display:none">Nominee Email</th>
+											<th class="_t_d _thead h005" style="display:none">Nominee Address</th>
+											
+										</tr>
+									</thead>
+									<tbody>
+									
+									{% for e in emp %}
+										<tr class="_t_r tr_patt">
+											<td class="_t_d _tcell b001" style="display:none">{{forloop.counter}}</td>
+											<td class="_t_d _tcell b002" style="display:none">
+												<div class=" profil-image ">Photo</div>
+											</td>
+											<td class="_t_d _tcell b003" style="display:none">
+												<a href="{% url 'hrm_employeeProfile' id=e.id %}" class="primary_anchor high_txt">{{e.First_name}}, {{e.Last_name}}</a>
+											</td>
+											<td class="_t_d _tcell b004" style="display:none">
+												<span>{{e.Father_name}}</span>
+											</td>
+											<td class="_t_d _tcell b005" style="display:none">{{e.id}}</td>
+											<td class="_t_d _tcell b006" style="display:none">DGM</td>
+											<td class="_t_d _tcell b007" style="display:none">
+												<div>{{e.Phone1}}</div>
+												<div>{{e.Phone2|default_if_none:""}}</div>
+											</td>
+											<td class="_t_d _tcell b008" style="display:none">
+												<div>{{e.Email}}</div>
+											</td>
+											<td class="_t_d _tcell good_cell b009" style="display:none">Active</td>
+											<td class="_t_d _tcell b010" style="display:none">{{e.Work_location}}</td>
+											
+											<td class="_t_d _tcell c001" style="display:none">{{e.Motder_name}}</td>
+											<td class="_t_d _tcell c002" style="display:none">{{e.Marital_status}}</td>
+											<td class="_t_d _tcell c003" style="display:none">{{e.Spouse_name}}</td>
+											<td class="_t_d _tcell c004" style="display:none">{{e.Date_of_birth}}</td>
+											<td class="_t_d _tcell c005" style="display:none">{{e.Gender}}</td>
+											<td class="_t_d _tcell c006" style="display:none">{{e.Current_address}}, {{e.Current_address_city}}, {{e.Current_address_state}}, {{e.Current_address_pin}}</td>
+											<td class="_t_d _tcell c007" style="display:none">{{e.Permanent_address|default:"--"}}, {{e.Permanent_address_city|default:"--"}}, {{e.Permanent_address_state|default:"--"}}, {{e.Permanent_address_pin|default:"--"}}</td>
+											
+											<td class="_t_d _tcell d001" style="display:none">{{e.Aadhaar_number|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell d002" style="display:none">{{e.PAN_number|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell d003" style="display:none">{{e.Voter_id|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell d004" style="display:none">{{e.Passport|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell d005" style="display:none">{{e.Driver_license|default_if_none:"--"}}</td>
+											
+											<td class="_t_d _tcell e001" style="display:none">{{e.Bank_details|default_if_none:"Not Availbale"}}</td>
+											<td class="_t_d _tcell e002" style="display:none">{{e.Account_number|default_if_none:"Not Availbale"}}</td>
+											<td class="_t_d _tcell e003" style="display:none">{{e.IFSC_code|default_if_none:"Not Availbale"}}</td>
+											
+											
+											<td class="_t_d _tcell f002" style="display:none">{{e.Department|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell f003" style="display:none">{{e.Work_place|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell f004" style="display:none">{{e.Work_location|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell f005" style="display:none">{{e.Date_ofJoining|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell f006" style="display:none">{{e.Reporting_officer|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell f007" style="display:none">{{e.Work_email|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell f008" style="display:none">{{e.Work_phone|default_if_none:"--"}}</td>
+											
+											<td class="_t_d _tcell g001" style="display:none">{{e.Emergency_contact_name|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell g002" style="display:none">{{e.Emergency_contact_relation|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell g003" style="display:none">
+												<div>{{e.Emergency_contact_phone1|default_if_none:"--"}}</div>
+												<div>{{e.Emergency_contact_phone2|default_if_none:"--"}}</div>
+											</td>
+											<td class="_t_d _tcell g004" style="display:none">{{e.Emergency_contact_Email|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell g005" style="display:none">{{e.Emergency_contact_address|default_if_none:"--"}}</td>
+											
+											<td class="_t_d _tcell h001" style="display:none">{{e.Nominee_name|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell h002" style="display:none">{{e.Nominee_relation|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell h003" style="display:none">{{e.Nominee_phone1|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell h004" style="display:none">{{e.Nominee_email|default_if_none:"--"}}</td>
+											<td class="_t_d _tcell h005" style="display:none">{{e.Nominee_address|default_if_none:"--"}}</td>
+											
+										</tr>
+									
+									{% endfor %}
+										
+										
+									</tbody>
+								</table>
+								
+				
+								<div id="table_msg_below"></div>
+							</div>
+						</div>
+					</div>
+					
+					{{set.Setting|json_script:'view-setting'}}
+					<script>
+						
+						var vd = {
+							"b001":1,
+							"b002":1,
+							"b003":1,
+							"b004":1,
+							"b005":1,
+							"b006":1,
+							"b007":1,
+							"b008":1,
+							"b009":1,
+							"default":0
+						}
+						
+						var vd = JSON.parse(JSON.parse(document.getElementById('view-setting').textContent));
+						
+						$(document).ready(function(){
+							//$("._t_d").hide();
+							for(e in vd){
+								$("."+e).show();
+							}
+						});
+							
+					   $(document).ready(function(){
+					   $("#ExportCurrentView").click(function(){
+						   $("#employeeViewTable").tableHTMLExport({
+
+							  type:'csv',
+							  filename: 'EmployeeRoll.csv'
+
+							});
+						   console.log("EmployeeRoll downloaded...");
+						});
+					});
+					</script>
+				<!-- Employee End -->
+
+				
+{% endblock %}

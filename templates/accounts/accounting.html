@@ -1,0 +1,137 @@
+{% extends 'accounts/_accounts_base.html'  %}
+{% load static %}
+
+{% block accounts_title %}
+	<title> Billing System </title>
+{% endblock %}
+
+{% block accounts %}
+				<!-- Bill Menu -->
+				<div class="section-master" style="display:non">
+					
+					
+
+					<div class="hopper-panel clear">
+						
+						<a class="push-flot">
+							<span class="__h17"></span> 
+							<span class=""><b> Bill Desk</b></span>
+						</a>
+			
+						<a href="#settings" id="_btn_bill_jax_4" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-gear"></i> Setting
+						</a>
+						<a href="#ledger" id="_btn_bill_jax_3" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-wrench"></i> Ledger
+						</a>
+						<a href="#voucher" id="_btn_bill_jax_2" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-drivers-license"></i> Transaction
+						</a>
+						<a href="#generate_bill" id="_btn_bill_jax_1" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-inr"></i> Report
+						</a>
+						<a href="{% url 'accounts_bill_desk' %}" id="_btn_bill_jax_0" class="btn-push-flot-anch rfloat">
+							<i class="fa fa-home"></i> Home	
+						</a>
+					</div>
+				</div>
+				<!-- Bill Menu End -->
+				<!-- Bill Desk Jax Panel -->
+				<div id="jax-response-body-rec">
+					
+					
+					<div class="cont-">
+						<div class="clear">
+							<div class="floaterX">CREATE A VOUCHER</div>
+							<div class="floaterX">CREATE A LEDGER</div>
+						</div>
+					</div>
+					
+					
+				</div>
+				<!-- Bill Desk Jax Panel End-->
+				<script id="ajax_url_list">
+								//console.log("{{cod.Job_code}}");
+								//erp.o.job_code="{{cod.Job_code}}";
+								erp.ur.bdesk_newb="{% url 'accounts_jax_billDesk_newBill' %}";
+								erp.ur.bdesk_invo="{% url 'hrm_jax_rec_cand' %}";
+								erp.ur.bdesk_tool="{% url 'accounts_jax_billDesk_tools' %}";
+								erp.ur.ed_can="{% url 'hrm_jax_rec_edit' %}";
+								
+								erp.myObject($("#_btn_bill_jax_1"),'Button Code RECJAX1',function(b,t){
+														
+														t.btn.recjax1=b;
+														t.btn.recjax1.on('click',function(e){
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l)
+															t.jax("json",{},"get",t.ur.bdesk_newb,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+												});
+								erp.myObject($("#_btn_bill_jax_2"),'Button Code RECJAX2',function(b,t){
+														
+														t.btn.recjax2=b;
+														t.btn.recjax2.on('click',function(e){
+															
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l);
+															t.jax("json",{},"get",t.ur.bdesk_invo,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+													
+												});
+												
+								erp.myObject($("#_btn_bill_jax_3"),'Button Code RECJAX3',function(b,t){
+														
+														t.btn.recjax3=b;
+														t.btn.recjax3.on('click',function(e){
+														
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l);
+															t.jax("json",{},"get",t.ur.bdesk_tool,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+												});
+
+								erp.myObject($("#_btn_bill_jax_4"),'Button Code RECJAX4',function(b,t){
+														
+														t.btn.recjax4=b;
+														t.btn.recjax4.on('click',function(e){
+														
+															var p = $("#jax-response-body-rec");
+															t.html(p,t.tpl.l);
+															t.jax("json",{},"get",t.ur.ed_can,
+															function(e){
+																t.html(p,e.html);
+															},
+															function(e){
+																t.jxerr(e,p)	
+															});
+													});	
+													
+												});
+
+								
+								erp.kill($("#ajax_url_list"))
+								
+							</script>
+				
+{% endblock %}

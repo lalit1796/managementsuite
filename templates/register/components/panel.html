@@ -1,0 +1,58 @@
+{% load static %}
+<style>
+
+a.regpanel-item:hover,a.hrpanel-selected, a.regpanel-item.{{sign}} {
+    color: #083e7b;
+    background: #f4f4f4;
+	border: solid #d1cfcf;
+    border-width: 1px 0;
+    box-shadow: inset 0 0 3px #dedddd;
+	font-weight:bold;
+	text-indent: 4px;
+}
+
+</style>
+<div class="panel-reg common-dime-header-to-panel-integration">
+	<div class="_menu_reg">
+		<div class="menu-panel">
+			<ul class="nodo">
+				<li class="nodoli">
+					<div class="hrader-containment">
+						<img src="{% static 'logo/shibhansh-croped-trp.png' %}" class="logo-on-panel" alt="Shibhansh Logo File"/>
+					</div>
+				</li>
+				<li class="nodoli">
+					<div class="reg-head">
+						<div class="non-link-head">Register Management | Shibhansh Facility </div>
+					</div>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'register_home' %}" title="Home" class="_dflnk regpanel-item home">
+						<span class="icn-spc"><i class="fa fa-bullhorn"></i></span>
+						<span class="icn-txt">Home</span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'register_new' %}" title="Create new register" class="_dflnk regpanel-item new">
+						<span class="icn-spc"><i class="fa fa-file-o"></i></span>
+						<span class="icn-txt">New Register</span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'register_all' %}" title="All registers" class="_dflnk regpanel-item view">
+						<span class="icn-spc"><i class="fa fa-folder"></i></span>
+						<span class="icn-txt">All Register</span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'register_home' %}" title="Settings" class="_dflnk regpanel-item sett">
+						<span class="icn-spc"><i class="fa fa-gear"></i></span>
+						<span class="icn-txt">Settings</span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+

@@ -1,0 +1,117 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> HR Payroll Manager </title>
+{% endblock %}
+
+{% block hr %}
+			<!-- Payroll -->
+				
+				<div class="section-master payroll" style="display:non">
+				
+					<div class="regsec">
+					
+						<div class="RegisterList">
+							<div class="uphead"> <center>Select a register for payroll</center> </div>
+							<div class="all_reg_tools clear">
+								<div class="tool-snap">
+									<label><b>Filter registers : </b></label>
+									<input type="text" id="attFilter" class="reg_filter" placeholder="Search..."/>
+								</div>
+							</div>
+							<div class="__register__" title="Register">
+								<a href="{% url 'hrm_paysheet' %}" class="__regl__ reg_link _reg_inbound">
+									<div class="__reg__"> 
+										<div class="index-page">Attendance 2020</div>
+									</div>
+									<div class="__strip__"></div>
+								</a>
+								<a href="#" class="__regl__ reg-title">
+									Yatharth Register G. Noida Yatharth Register G. Noida Yatharth Register G. Noida jabes
+								</a>
+							</div>
+							
+							<div class="__register__" title="Register">
+								<a href="#" class="__regl__ reg_link _reg_inbound">
+									<div class="__reg__">
+										<div class="index-page">Attendance 2020</div>
+									</div>
+									<div class="__strip__"></div>
+								</a>
+								<a href="#" class="__regl__ reg-title">
+									Yatharth Register G. Noida jabes singh
+								</a>
+							</div>
+							
+							<div class="__register__" title="Register">
+								<a href="#" class="__regl__ reg_link _reg_inbound">
+									<div class="__reg__">
+										<div class="index-page">Attendance 2020</div>
+									</div>
+									<div class="__strip__"></div>
+								</a>
+								<a href="#" class="__regl__ reg-title">
+									Yatharth Register G. Noida singh
+								</a>
+							</div>
+							
+							<div class="__register__" title="Register">
+								<a href="#" class="__regl__ reg_link _reg_inbound">
+									<div class="__reg__">
+										<div class="index-page">Attendance 2020</div>
+									</div>
+									<div class="__strip__"></div>
+								</a>
+								<a href="#" class="__regl__ reg-title">
+									Yatharth Register G. Noida
+								</a>
+							</div>
+							
+							<div class="__register__" title="Register">
+								<a href="#" class="__regl__ reg_link _reg_inbound">
+									<div class="__reg__">
+										<div class="index-page">Attendance 2020</div>
+									</div>
+									<div class="__strip__"></div>
+								</a>
+								<a href="#" class="__regl__ reg-title">
+									Yatharth Register G. Noida lalit
+								</a>
+							</div>
+							
+							<div class="__register__" title="Register">
+								<a href="#" class="__regl__ reg_link _reg_inbound">
+									<div class="__reg__">
+										<div class="index-page">Attendance 2020</div>
+									</div>
+									<div class="__strip__"></div>
+								</a>
+								<a href="#" class="__regl__ reg-title">
+									Yatharth Register G. Noida lalit singh kalra
+								</a>
+							</div>
+							
+							<script>
+								$("#attFilter").on("keyup",function(){
+										
+										var value = $(this).val().toLowerCase();
+										$(".__register__").filter(function() {
+										  $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+										});
+								
+								});
+							
+							</script>
+
+							
+						</div>
+					
+					</div>
+				
+					
+						
+				</div>
+			<!-- Payroll End -->
+				
+{% endblock %}

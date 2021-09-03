@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block head %}
+
+	{% block accounts_title %}
+	
+	{% endblock %}
+
+
+	<script src="{% static 'js/exporttable.js' %}"/></script>
+	<script src="{% static 'js/jsPDF.js' %}"/></script>
+	<!-- <script src='https://parall.ax/parallax/js/jspdf.js'/></script> -->
+	
+	
+	
+{% endblock %}
+
+{% block header %}
+
+	<!-- Header HRM Start -->
+	{%  include 'accounts/components/header.html'%}
+	<!-- Header HRM End -->
+	
+{% endblock %}
+
+{% block content %} 
+	<div class="clear hr-container common-dime-header-integration">
+		<!-- Options Start-->
+		{%  include 'accounts/components/panel.html'%}
+		<!-- Options End -->
+		
+		<!-- Main Content Start -->
+		<div class="main-hr">
+			<div class="main-container clear">
+				<div class="main-snip h100">
+					<div class="hr-content-area mnh600">
+					
+					{% block accounts %}
+						
+					{% endblock %} 
+					
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- Main Content End-->
+	</div>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> Create New Job </title>
+{% endblock %}
+
+{% block hr %}
+			<!-- Recruit New -->
+				<div class="section-master hire-job-code-master" style="display:non">
+					
+					<div class="hopper-panel clear" style="display:none">
+						<div class="btn-push-flot rfloat">
+							<div class="job-code-selector-sec table">
+								<div class="job-code-label table-cell"><b>SELECT JOB CODE</b></div>
+								<div class="job-code-option table-cell">
+									<select data-code="view" data-placeholder="Job Code" class="chosen-select" tabindex="-1" style="display: none; width:300px">
+										{% for j in jobs %}
+										<option value="{{j.Job_code}}">{{ j.Job_code }}</option>
+										{% endfor %}
+									</select>
+								</div>
+							</div>
+						</div>
+					</div>
+					
+					<div class="hopper-push">
+						<div id="tgs_body">
+							<b><center> HEY YOU! You are here just out of your curosity :) NICE WORK!</center></b>
+							
+							
+						</div>
+					</div>
+					
+				</div>
+			<!-- Recruit New End -->
+				
+{% endblock %} 

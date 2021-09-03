@@ -1,0 +1,114 @@
+{% load static %}
+<style>
+
+a.hrpanel-item:hover,a.hrpanel-selected, a.hrpanel-item.{{sign}} {
+    color: #083e7b;
+    background: #f4f4f4;
+	border: solid #d1cfcf;
+    border-width: 1px 0;
+    box-shadow: inset 0 0 3px #dedddd;
+	font-weight:bold;
+	text-indent: 4px;
+}
+
+</style>
+<div class="panel-hr common-dime-header-to-panel-integration">
+	<div class="_menu_hr">
+		<div class="menu-panel">
+			<ul class="nodo">
+				<li class="nodoli" style="display:none">
+					<div class="hrader-containment">
+						<img src="{% static 'logo/shibhansh-croped-trp.png' %}" class="logo-on-panel" alt="Shibhansh Logo File"/>
+					</div>
+				</li>
+				<li class="nodoli">
+					<div class="panel-head">
+					
+						<div class="non-link-head">Human Resource Management</div>
+					</div>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'hrm_home' %}" title="Announcement" class="_dflnk hrpanel-item home clear">
+						<span class="icn-spc"><i class="fa fa-bullhorn"></i></span>
+						<span class="icn-txt">Announcement</span> 
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'hrm_recruit' %}" title="Recruit Panel" class="_dflnk hrpanel-item recr">
+						<span class="icn-spc"><i class="fa fa-handshake-o"></i></span>
+						<span class="icn-txt">Recruit Panel</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'hrm_employee' %}" title="Employee" class="_dflnk hrpanel-item empl">
+						<span class="icn-spc"><i class="fa fa-users"></i></span>
+						<span class="icn-txt">Employee</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'hrm_payroll' %}" title="Payroll" class="_dflnk hrpanel-item payr">
+						<span class="icn-spc"><i class="fa fa-money"></i></span> 
+						<span class="icn-txt">Payroll</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'hrm_training' %}" title="Training" class="_dflnk hrpanel-item trai">
+						<span class="icn-spc"><i class="fa fa-calendar-check-o"></i></span> 
+						<span class="icn-txt">Training</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'hrm_file' %}" title="File Manager" class="_dflnk hrpanel-item file">
+						<span class="icn-spc"><i class="fa fa-file-o"></i></span>
+						<span class="icn-txt">File Manager</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'hrm_report' %}" title="Reports" class="_dflnk hrpanel-item repo">
+						<span class="icn-spc"><i class="fa fa-file-text-o"></i></span> 
+						<span class="icn-txt">Reports</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>						
+					</a>
+				</li>
+				
+				<li class="nodoli top-line">
+					<a href="{% url 'register_home'%}" title="Register Manager" class="_dflnk hrpanel-item myco">
+						<span class="icn-spc"><i class="fa fa-long-arrow-right"></i></span> 
+						<span class="icn-txt">Register Manager</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>						
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'register_home'%}" title="CRM" class="_dflnk hrpanel-item sett">
+						<span class="icn-spc"><i class="fa fa-long-arrow-right"></i></span> 
+						<span class="icn-txt">CRM</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>						
+					</a>
+				</li>
+				
+				<li class="nodoli top-line">
+					<a href="{% url 'hrm_report' %}" title="Reports" class="_dflnk hrpanel-item myco">
+						<span class="icn-spc"><i class="fa fa-file-text-o"></i></span> 
+						<span class="icn-txt">My Company</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>						
+					</a>
+				</li>
+				<li class="nodoli">
+					<a href="{% url 'settings' %}" title="Reports" class="_dflnk hrpanel-item sett">
+						<span class="icn-spc"><i class="fa fa-gear"></i></span> 
+						<span class="icn-txt">Settings</span>
+						<span class="rfloat"><i class="fa fa-angle-right rfloat"></i></span>						
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+
+

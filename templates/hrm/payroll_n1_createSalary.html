@@ -1,0 +1,343 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> HR Payroll Manager </title>
+{% endblock %}
+
+{% block hr %}
+			<!-- Payroll -->
+				
+				<div class="section-master payroll" style="display:non">
+				
+					
+					
+										
+					<div id="ptools" class="tools">
+						<div class="t-sec">
+							<div class="tbtns">
+								<button id="new_structer" class="dumpling-btns">Create New Salary Structer</button>
+								<button id="select-code" class="dumpling-btns">Select Wages Code</button>
+							</div>
+						</div>
+					</div>
+					
+					<div class="pstructure">
+						<div class="container">
+							<div class="iphlds">
+								<label class="tylbl" for="scode">Create a unique code</label>
+								<input name="spre" value="WC001-"/>
+								<input class="tyinp" type="text" name="scode" placeholder="Input a code"/>
+							</div>
+							<div class="iphlds">
+								<label class="tylbl" for="scode">Location of employement</label>
+								<input class="tyinp" type="text" name="scode" placeholder="Location"/>
+							</div>
+							<div class="iphlds">
+								<label class="tylbl" for="sleaves">Monthly Fixed Leaves</label>
+								<input class="tyinp" type="text" name="sleaves" placeholder="Monthly allowed leaves"/>
+							</div>
+							<div class="iphlds">
+								<label class="tylbl" for="sisfixed">Is monthly wage same for everyone?</label><br/>
+								<input type="radio" id="male" name="isfixed" value="Yes">
+								<label for="male">Yes, Same for everyone.</label><br>
+								<input type="radio" id="female" name="isfixed" value="No">
+								<label for="female">No, Different for everyone.</label><br>
+							</div>
+							<div class="iphlds">
+								<label class="tylbl" for="swage">Monthly wages</label>
+								<input class="tyinp" type="number" name="swage" placeholder="Monthly wages"/>
+							</div>
+						</div>
+					</div>
+					
+					<div class="month-maker" style="display:non">
+						<div class="m-sec">
+							<div class="pinlabel">Month Structure</div>
+							<table>
+								<tbody>
+								<tr>
+									<td>Select Month:</td>
+									<td><input type="month" id="bdaymonth"></td>
+								</tr>
+								<tr>
+									<td>Total Days</td>
+									<td><input disabled=true type="text" id="days"></td>
+								</tr>
+								<tr>
+									<td>Total Sundays</td>
+									<td><input disabled=true type="text" id="sundays"></td>
+								</tr>
+								<tr>
+									<td>Other Leaves</td>
+									<td><input type="text" id="holiday" value=0></td>
+									<td><input type="text" id="leave-not" placeholder="Festival, Republic day etc"></td>
+								</tr>
+								<tr>
+									<td>Total Working Days</td>
+									<td><input type="text" id="wdays" value=0></td>
+									
+								</tr>
+								
+								<tbody>
+							</table>
+							
+							
+						</div>
+						<div class="m-sec">
+							<div class="pinlabel">Tools</div>
+							<table>
+								<tbody>
+								<tr>
+									<td>Select Month:</td>
+									<td><input type="month" id="bdaymonth"></td>
+								</tr>
+								<tr>
+									<td>Total Days</td>
+									<td><input disabled=true type="text" id="days"></td>
+								</tr>
+								<tr>
+									<td>Total Sundays</td>
+									<td><input disabled=true type="text" id="sundays"></td>
+								</tr>
+								<tr>
+									<td>Other Leaves</td>
+									<td><input type="text" id="holiday" value=0></td>
+									<td><input type="text" id="leave-not" placeholder="Festival, Republic day etc"></td>
+								</tr>
+								<tr>
+									<td>Total Working Days</td>
+									<td><input type="text" id="wdays" value=0></td>
+									
+								</tr>
+								
+								<tbody>
+							</table>
+							<div class="clear">
+								<div id="pri" class="btn-puff">Print Sheet</div>	
+								<div id="donl" class="btn-puff">Download</div>	
+								<div id="ms" class="btn-puff">Make Salary</div>	
+							</div>
+						</div>
+						
+					</div>
+					<div class="payroll_master" style="display:non">
+					
+					
+					<table id="payrolltable" class="pytb w100" cellspacing=0>
+						<thead class="pythe">
+							<tr class="pytre">
+								<th class="pyth">Empl Id</th>
+								<th class="pyth">Name</th>
+								<th class="pyth">Code</th>
+								<th class="pyth">Working Days</th>
+								<th class="pyth">Attendance</th>
+								<th class="pyth">Leaves</th>
+								<th class="pyth">Gadgetted Leave</th>
+								<th class="pyth">Monthly Wage</th>
+								<th class="pyth">Daily Wage</th>
+								<th class="pyth">Gross Salary</th>
+								<th class="pyth">Less: Advance</th>
+								<th class="pyth">Less: HR</th>
+								<th class="pyth">Less: Uniform</th>
+								<th class="pyth">Less: Other</th>
+								<th class="pyth"><i class="fa fa-inr"></i> Net Pay</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr id="_{{e.id}}" data-code="office" class="pytr datarow">
+								<td class="pytd"><div class="sectum">{{e.id}}</div></td>
+								<td class="pytd"><div class="sectum">{{e.First_name}} {{e.Last_name}}</div></td>
+								<td class="pytd"><div class="sectum">office</div></td>
+								<td class="pytd"><input name="wdays" class="plipt" disabled=true type="text" value=26 /></td>
+								<td class="pytd"><input name="attendance" class="plipt" disabled=true  type="text" value=24 /></td>
+								<td class="pytd"><input name="leaves" class="plipt" disabled=true  type="text" value=4 /></td>
+								<td class="pytd"><input name="wd" class="plipt" disabled=true  type="text" value=2 /></td>
+								<td class="pytd"><input name="wage" class="plipt" disabled=true  type="text" value=60000 /></td>
+								<td class="pytd"><input name="daily" class="plipt" disabled=true  type="text" value=250 /></td>
+								<td class="pytd"><input name="gsal" class="plipt" disabled=true  type="text" value=3500 /></td>
+								<td class="pytd"><input name="ladv" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="lrent" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="luniform" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="lother" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="netpay" class="plipt" disabled=true  type="text" value=0 /></td>
+							</tr>
+						{% for e in emp %}
+							<tr id="_{{e.id}}" data-code="office" class="pytr datarow">
+								<td class="pytd"><div class="sectum">{{e.id}}</div></td>
+								<td class="pytd"><div class="sectum">{{e.First_name}} {{e.Last_name}}</div></td>
+								<td class="pytd"><div class="sectum">office</div></td>
+								<td class="pytd"><input name="wdays" class="plipt" disabled=true type="text" value=25 /></td>
+								<td class="pytd"><input name="attendance" class="plipt" disabled=true  type="text" value=20 /></td>
+								<td class="pytd"><input name="leaves" class="plipt" disabled=true  type="text" value=4 /></td>
+								<td class="pytd"><input name="wd" class="plipt" disabled=true  type="text" value=2 /></td>
+								<td class="pytd"><input name="wage" class="plipt" disabled=true  type="text" value=30000 /></td>
+								<td class="pytd"><input name="daily" class="plipt" disabled=true  type="text" value=250 /></td>
+								<td class="pytd"><input name="gsal" class="plipt" disabled=true  type="text" value=3500 /></td>
+								<td class="pytd"><input name="ladv" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="lrent" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="luniform" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="lother" class="plipt plchangeable"  type="text" value=0 /></td>
+								<td class="pytd"><input name="netpay" class="plipt" disabled=true  type="text" value=0 /></td>
+							</tr>
+						{% endfor %}
+						
+						</tbody>
+					</table>
+					<script>
+					
+					
+						
+					
+					
+					$(".plchangeable")
+					.on('focus',function(){
+						$(this).parent(".pytd").css("background-color", "yellow");
+					}).on("focusout",function(){$(this).parent(".pytd").css("background-color", "transparent");
+						$(this).attr('value',$(this).val());
+						$("#ms").click();
+					})
+					
+					
+					$("#bdaymonth").on("change",function(){
+					
+						function sundays(year, month) {
+
+							var day, counter, date;
+
+							day = 1;
+							counter = 0;
+							date = new Date(year, month, day);
+							while (date.getMonth() === month) {
+								if (date.getDay() === 0) { 
+									counter += 1;
+								}
+								day += 1;
+								date = new Date(year, month, day);
+							}
+							return counter;
+						}
+					
+					
+					
+						var selected_month = new Date($(this).val()).getMonth();
+						var selected_year = new Date($(this).val()).getFullYear();
+						
+						
+						$("#days").attr('value',new Date(selected_year, selected_month+1, 0).getDate());
+						$("#sundays").attr('value',sundays(selected_year, selected_month));
+						$("#wdays").attr('value',$("#days").val()-$("#sundays").val()-$("#holiday").val())
+						
+					});
+					
+					
+					//
+					$(document).ready(function(){
+					
+						
+							$("#pri").on("click",function(){
+									$("#payrolltable").print({
+										
+										manuallyCopyFormValues: true,
+										append : "<div>Free jQuery Plugins</div>",
+										prepend : "",
+										title: "",
+										deferred: $.Deferred(),
+										doctype: '<!doctype html>'
+
+									
+									});
+									console.log("hit");
+								});
+							
+						
+						$("#ms").click(function(){
+							
+							var trlist = $(".datarow");
+							trlist.each(function(){
+								var t = $(this),
+									days = t.find("input[name=wdays]"),
+									leaves = t.find("input[name=leaves]"),
+									att = t.find("input[name=attendance]"),
+									mw = t.find("input[name=wage]"),
+									dw = t.find("input[name=daily]"),
+									gs = t.find("input[name=gsal]"),
+									lad = t.find("input[name=ladv]"),
+									lhr = t.find("input[name=lrent]"),
+									lun = t.find("input[name=luniform]"),
+									lot = t.find("input[name=lother]"),
+									np = t.find("input[name=netpay]");
+									
+									vmw = mw.val();
+									dw.attr('value',(vmw/31).toFixed(2));
+									
+									vdw = dw.val();
+									vat = att.val();
+									gs.attr('value',(vat*vdw).toFixed(2))
+									
+									vgs = gs.val();
+									vlad = lad.val();
+									vlhr = lhr.val();
+									vlun = lun.val();
+									vlot = lot.val();
+									np.attr('value',(vgs - vlad - vlhr - vlun - vlot).toFixed(0))
+									
+									
+									
+									
+			
+							});
+							
+							
+						
+						});
+					});
+					//
+					$(document).ready(function(){
+						$(".dumpling-btns").on('click',function(){
+						
+							$(".dumpling-btns").removeClass("pselect");
+							$(".dumpling-btns").attr('disabled',false);
+							$(this).addClass("pselect");
+							$(this).attr('disabled',true);
+							
+							if($(".dumpling-btns").hasClass("pselect")){
+								$("#ptools").css({'padding':'0px'})
+							}
+							
+						});
+					});
+					//
+					var _qry = {}
+					
+					_qry.a = {
+						id:324,
+						name:"Lalit Singh",
+						code:"office",
+						at:24,
+						wage:11500,
+						status:"pending",
+						data:"NA",
+					
+					}
+					_qry._sl_ = function(){
+						console.log(this.a);
+						var a = this.a
+						console.log(a);
+						if(a.status == "pending"){
+							
+							var days = new Date(2020, 4, 0).getDate()	
+							console.log(days);
+						}
+						
+					}
+					
+					_qry._sl_()
+					
+					</script>
+					</div>
+						
+				</div>
+			<!-- Payroll End -->
+				
+{% endblock %}

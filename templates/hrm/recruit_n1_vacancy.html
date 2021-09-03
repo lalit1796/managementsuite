@@ -1,0 +1,99 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> Job Codes </title>
+{% endblock %}
+
+{% block hr %}
+			<!-- Recruit -->
+				<div class="section-master">
+					
+				
+					<div class="task_list">
+						<div class="tool-table-list">
+							<div class="tool-table-item clear">
+								<ul class="list-nor">
+									<li class="list-nor-item">
+										<div class="inpan mar-right-8">
+											<span><i class="fa fa-search"></i></span> 
+											<span><input id="job-pst-filter" type="text" class="filter-input table_search" placeholder="Filter"/><span>
+										</div>
+									</li>
+									<li class="list-nor-item">
+										<a class="list-item-btn" href="{% url 'hrm_recruit_vacancy_new' %}">Creat New Job Profile</a>
+									</li>
+								</ul>
+							</div>
+						</div>
+						<div class="disk-home-plate">
+						
+							
+							
+							
+							
+							
+							<div id="recruit_list_all_vacancy" class="table-in">
+							
+								<table id="employeeViewTable" class="_t_b " cellspacing="0">
+									<thead>
+										<tr id="" class="_t_r _table_head">
+											
+											<th class="_t_d _thead b001" style="">Serial</th>
+											<th class="_t_d _thead b002" style="">Job Code</th>
+											<th class="_t_d _thead b003" style="">Designation</th>
+											<th class="_t_d _thead b004" style="">Depatment</th>
+											<th class="_t_d _thead b005" style="">Location</th>
+											<th class="_t_d _thead b006" style="">CTC</th>
+											<th class="_t_d _thead b007" style="">Status</th>
+											<th class="_t_d _thead b007" style="">Action</th>
+											
+											
+										</tr>
+									</thead>
+									<tbody>
+									
+										{% for j in jobs %}
+										
+										<tr class="_t_r tr_patt">
+											<td class="_t_d _tcell b001" style="">{{forloop.counter}}</td>
+											<td class="_t_d _tcell b002" style="">
+												<span>{{ j.Job_code }}</span>
+											</td>
+											<td class="_t_d _tcell b003" style="">
+												<span>{{ j.Designation }}</span>
+											</td>
+											<td class="_t_d _tcell b004" style="">
+												<span>{{ j.Department }}</span>
+											</td>
+											<td class="_t_d _tcell b005" style="">{{ j.Location }}</td>
+											<td class="_t_d _tcell good_cell b009" style=""><i class="fa fa-rupee"></i> {{ j.Ctc }}</td>
+											<td class="_t_d _tcell b006" style="">Vacant</td>
+											<td class="_t_d _tcell b003" style="">
+												<a href="{% url 'hrm_recruit_hire_code' code=j.Job_code %}" class="primary_anchor high_txt">New Hiring</a>
+											</td>
+											
+										</tr>
+									
+										{% endfor %}
+									
+										
+										
+									</tbody>
+								</table>
+							
+							</div>
+							
+							
+							
+							
+						</div>
+					</div>
+					
+					
+				
+					
+				</div>
+			<!-- Recruit End -->
+				
+{% endblock %}

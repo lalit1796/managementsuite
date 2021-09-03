@@ -1,0 +1,191 @@
+{% extends 'hrm/_hrm_base.html'  %}
+{% load static %}
+
+{% block hr_title %}
+	<title> Create New Job </title>
+{% endblock %}
+
+{% block hr %}
+			<!-- Recruit New -->
+				<div class="section-master new-job-code-master" style="display:non">
+					
+					{% if created %}
+					
+					
+					<div class="incroach-table">
+						<table class="presentation-table">
+							<tbody class="presentation-table-body">
+								<tr>
+									<td colspan=2>
+										<div class="created-h1">
+											Job for your company has been created <span><u>successfully</u></span>
+										</div>
+									</td>
+								</tr>
+								<tr class="presentation-table-tr">
+									<td class="presentation-table-td p-t-labl">Job Code</td>
+									<td class="presentation-table-td p-t-data">{{job.Job_code}}</td>
+								</tr>
+								<tr class="presentation-table-tr">
+									<td class="presentation-table-td p-t-labl">Department</td>
+									<td class="presentation-table-td p-t-data">{{job.Department}}</td>
+								</tr>
+								<tr class="presentation-table-tr">
+									<td class="presentation-table-td p-t-labl">Designation</td>
+									<td class="presentation-table-td p-t-data">{{job.Designation}}</td>
+								</tr>
+								<tr class="presentation-table-tr">
+									<td class="presentation-table-td p-t-labl">Cost to company</td>
+									<td class="presentation-table-td p-t-data"><i class="fa fa-rupee"></i> {{job.Ctc}}</td>
+								</tr>
+								<tr class="presentation-table-tr">
+									<td class="presentation-table-td p-t-labl">Location</td>
+									<td class="presentation-table-td p-t-data">{{job.Location}}</td>
+								</tr>
+								<tr class="presentation-table-tr">
+									<td class="presentation-table-td p-t-labl">Description</td>
+									<td class="presentation-table-td p-t-data">{{job.Description}}</td>
+								</tr>
+								<tr class="presentation-table-tr">
+									<td class="presentation-table-td p-t-labl">Notes</td>
+									<td class="presentation-table-td p-t-data">{{job.Notes}}</td>
+								</tr>
+								<tr>
+									<td colspan=2>
+										<a href="{% url 'hrm_recruit_hire_code' code=job.Job_code %}" class="tfn-btn">New Hiring <i class="fa fa-long-arrow-right"></i></a>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+					</div>
+					
+					
+					
+					
+					{% else %}
+					
+					<form class="table-form" method="POST" action="" novalidate>
+						<table class="form-table" cell-spacing=0>
+							<thead class="f-head">
+								<tr class="f-t-head">
+									<td class="ft-td" colspan=2>
+										<div class="form-name"><a class="back-btn" href="#"><i class="fa fa-long-arrow-left"></i></a> Create New Job</div>
+									</td>
+								</tr>
+							</thead>
+							<tbody class="form-table-body">
+								<tr>
+									<td colspan=2>
+										{{ form.non_field_errors }}
+
+										{{ form.source.errors }}
+										{{ form.source }}
+										
+									</td>
+								</tr>
+								<tr class="f-t-b-t">
+									<td class="f-t-b-d"><div class="inp-sec">Job</div></td>
+									<td class="f-t-b-d">
+										<div class="label">Department</div>
+										<div class="input-positioner">
+											<div class="input-pan input-table-box input-table-field nogo">
+											{{ form.Department.errors }}
+											<select id="dep-sel" class="">
+												<option value="admin">Admin</option>
+												<option value="hr">HR</option>
+												<option value="marketing">Marketing</option>
+												<option value="accounts">Accounts</option>
+												<option value="it">IT</option>
+												<option value="logistics">Logistics</option>
+											</select>
+												<div class="hidden-html">
+													
+													{{ form.Department }}
+												</div>
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr class="f-t-b-t">
+									<td class="f-t-b-d"></td>
+									<td class="f-t-b-d">
+										<div class="label">Designation</div>
+										<div class="input-positioner">
+											<div class="input-pan input-table-box input-table-field nogo">
+												{{ form.Designation }}
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr class="f-t-b-t">
+									<td class="f-t-b-d"><div class="inp-sec">Amount</div></td>
+									<td class="f-t-b-d">
+										<div class="label">Cost To Company (CTC)</div>
+										<div class="input-positioner input-pre-hacker">
+											<div class="input-pan input-table-box input-table-field nogo">
+												
+												{{ form.Ctc }}
+											</div>
+										</div>
+										<div class="input-pre">
+											<i class="fa fa-rupee"></i>
+										</div>
+									</td>
+								</tr>
+								<tr class="f-t-b-t">
+									<td class="f-t-b-d"><div class="inp-sec">Details</div></td>
+									<td class="f-t-b-d">
+										<div class="label">Location</div>
+										<div class="input-positioner">
+											<div class="input-pan input-table-box input-table-field nogo">
+												{{ form.Location }}
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr class="f-t-b-t">
+									<td class="f-t-b-d"></td>
+									<td class="f-t-b-d">
+										<div class="label">Jod Description</div>
+										<div class="input-positioner">
+											<div class="input-pan input-table-box input-table-field nogo">
+												{{ form.Description }}
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr class="f-t-b-t">
+									<td class="f-t-b-d"></td>
+									<td class="f-t-b-d">
+										<div class="label">Notes (Optional)</div>
+										<div class="input-positioner">
+											<div class="input-pan input-table-box input-table-field nogo">
+												{{ form.Notes }}
+											</div>
+										</div>
+									</td>
+								</tr>
+								<tr class="f-t-b-t">
+									<td class="f-t-b-d"></td>
+									<td class="f-t-b-d">
+										{% csrf_token %}
+										
+										<div class="clear">
+											<div class="rfloat">
+												<button class="f-t-b-btn" type="submit">Create Job</button>
+											</div>
+										</div>
+									</td>
+								</tr>
+							</tbody>
+						</table>
+						
+					</form>
+					{% endif %}
+					
+				
+					
+				</div>
+			<!-- Recruit New End -->
+				
+{% endblock %}

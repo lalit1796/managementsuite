@@ -1,0 +1,120 @@
+{% load static %}
+
+<div class="login_form_div_inhead">
+				<div class="logger-indeed">
+					<div class="sec_holder">
+						{% if user.is_authenticated %}
+						<div>
+							<table>
+								<body>
+									<tr class="inhead_label_row">
+										<td class="inhead-img-prof" rowspan="2">
+											<div class="img-container-prof">
+												<img src="{% static 'profile_images/photo1.jpg' %}" class="prof-inhead-pic"/>	
+											</div>
+										</td>
+										<td class="inhead_label_col">
+											<div class="label_text_1">{{ user.get_full_name }}</div>
+										</td>
+										<td class="inhead_label_col">
+											<div class="label_text_1">(HR department)</div>
+										</td>
+									</tr>
+									<tr class="inhead_label_row">
+										<td class="inhead_label_col">
+											<div class="label_text_2">
+												<a href="{% url 'logout' %}" class="log-out-link pr-links"> 
+													Logout <i class="fa fa-sign-out"></i>
+												</a>
+											</div>
+										</td>
+										<td class="inhead_label_col">
+											<div class="label_text_2">
+												<a href="#" class="setting-profile-link pr-links">
+													Account <i class="fa fa-gear"></i>
+												</a>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						
+						{% else %}
+						
+						<form method="POST" action="{% url 'login' %}" class="login_form_inhead">
+							<table style="">
+								<tbody>
+									<tr class="inhead_label_row">
+										<td class="inhead_label_col">
+											<div class="label_text"><b>User Name</b></div>
+										</td>
+										<td class="inhead_label_col">
+											<div class="label_text"><b>Password</b></div>
+										</td>
+										<td></td>
+									</tr>
+									<tr class="inhead_label_row">
+										<td class="inhead_label_col">
+											<input name="username" type="text" class="input_text inhead_logger_input"/>
+										</td>
+										<td class="inhead_label_col">
+											<input name="password" type="password" class="input_text inhead_logger_input"/>
+										</td>
+										<td>
+											{% csrf_token %}
+											<input type="hidden" name="next" value="{{ request.GET.next }}" />
+											<button type="submit" class="inhead-login-button">
+												<span>
+													<span>Log In</span>
+												</span>
+											</button>
+										</td>
+									</tr>
+									<tr>
+										<td class="zerohtd">
+											<div class="rel_pop">
+												<div id="username_pop" class="inhead-hidden-pop pop-caret-top-left">
+													<div id="umg_p" class="msg">You are not logged in!</div>
+												</div>
+											</div>
+										</td>
+										<td class="zerohtd">
+											<div class="rel_pop">
+												<div id="password_pop" class="inhead-hidden-pop pop-caret-top-left">
+													<div id="pas_p" class="msg"></div>
+												</div>
+											</div>
+										</td>
+										<td class="zerohtd">
+											<div class="rel_pop">
+												<div id="logbtn_pop" class="inhead-hidden-pop pop-caret-top-left">
+													<div id="lgn_p" class="msg"></div>
+												</div>
+											</div>
+										</td>
+									</tr>
+								</tbody>
+							</table>
+						<form>
+						
+						{% endif %}
+						
+					</div>
+				</div>
+				
+			<div id="user_fscr">
+			
+				<script>
+				
+					$(document).ready(function(){
+						erp.myObject({"fullName":"{{ user.get_full_name }}","user":"{{user}}","email":"{{user.email}}","csrf":"{{ csrf_token }}"},"User details stored", function(a,t){
+							t.o.user=a;
+							t.html($("#user_fscr"),"")
+						});
+					});
+				
+				</script>
+			
+			</div>
+			</div>

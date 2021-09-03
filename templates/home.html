@@ -1,0 +1,197 @@
+{% extends 'base.html' %}
+
+
+
+{% block head %}
+
+	
+{% endblock %}
+
+
+{% block header %}
+
+<style>
+
+</style>
+<header class="_c_header common-dime-header">
+	<div class="head_panner clear">
+		<div class="stang lfloat">
+			<span>ORANGE.ERP</span>
+		</div>
+		<div class="_log_p_panel_inhead inhead rfloat">
+			{%  include '_components/logger_section_in_header.html'%}
+		</div>
+	</div>	
+	
+</header>
+
+{% endblock %}
+
+	
+
+0000
+
+
+{% block content %}
+<div id="grph" class="glyback" style="display:none"></div>	
+<div class="content-def clear common-dime-header-integration">
+	<div class="lfloat lpanel content-disk">
+		<div class="lbody">
+			<div class="lbody-disc lbody-disc-primary">
+				<div class="inf-disk inf-disk-head">
+					<span class="inf-cushion">ERP Suite | Shibhansh Facility Management Services Private Limited.</span>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion clear" href="{% url 'register_home'%}">Register Manager <i class="fa fa-angle-right rfloat"></i>
+					</a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'crm_home'%}">Customer Relationship Management <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'hrm_home'%}">HR Management <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'accounts_home'%}">Accounts Management <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'register_home'%}">Records And Documents <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+			</div>
+			<div class="lbody-disc lbody-disc-standard">
+				<div class="inf-disk">
+					<a class="inf-cushion clear" href="{% url 'register_home'%}">About ORANGE ERP. <i class="fa fa-angle-right rfloat"></i>
+					</a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion clear" href="{% url 'register_home'%}">How to? <i class="fa fa-angle-right rfloat"></i>
+					</a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'crm_home'%}">Terms and conditions of use. <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'hrm_home'%}">Who should use this software? <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'accounts_home'%}">Pricing <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+				<div class="inf-disk">
+					<a class="inf-cushion" href="{% url 'employee_home'%}">FAQs <i class="fa fa-angle-right rfloat"></i></a>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="rfloat rpanel content-disk">
+		<div class="rbody">
+			<div class="disk-home-plate">
+				{% if user.is_authenticated %}
+				<div class="disk-home">
+					<div class="disk-section">
+						<div class="3peec">
+							<div class="dheader">
+								<div class="text-d">Hi {{ user.get_username }}, Admin</div>
+							</div>
+							<div class="dbody">
+								<div class="body-d-container"></div>
+							</div>
+							<div class="dfooter clear">
+								<div class="text-d crab-x">
+									<form method="POST">
+										{% csrf_token %}
+										<input type="hidden" name="companyid"/>
+										<input type="hidden" name="user" value="{{  user.get_username }}"/>
+										<input type="hidden" name="companyid"/>
+										<button class="text-d-btn"><span>Learn Your Role </span> <i class="fa fa-angle-right"></i></button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% if user.is_authenticated %}
+				<div class="disk-home">
+					<div class="disk-section">
+						<div class="3peec">
+							<div class="dheader">
+								<div class="text-d">Shibhansh Facility Management Services Private Limited</div>
+							</div>
+							<div class="dbody">
+								<div class="body-d-container"></div>
+							</div>
+							<div class="dfooter clear">
+								<div class="text-d crab-x">
+									<form method="POST">
+										{% csrf_token %}
+										<input type="hidden" name="companyid"/>
+										<input type="hidden" name="user"/>
+										<input type="hidden" name="companyid"/>
+										<button class="text-d-btn"><span>My Company</span> <i class="fa fa-angle-right"></i></button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				{% if user.is_authenticated %}
+				<div class="disk-home">
+					<div class="disk-section">
+						<div class="3peec">
+							<div class="dheader">
+								<div class="text-d">Performance And Log</div>
+							</div>
+							<div class="dbody">
+								<div class="body-d-container"></div>
+							</div>
+							<div class="dfooter clear">
+								<div class="text-d crab-x">
+									<form method="POST">
+										{% csrf_token %}
+										<input type="hidden" name="companyid"/>
+										<input type="hidden" name="user"/>
+										<input type="hidden" name="companyid"/>
+										<button class="text-d-btn"><span>My Performance</span> <i class="fa fa-angle-right"></i></button>
+									</form>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				{% endif %}
+				
+			</div>
+		</div>
+	</div>
+	<script>
+	var mydata = {
+    "nodes": [
+        {
+          "id": "id1",
+          "name": "name1",
+          "val": 1
+        },
+        {
+          "id": "id2",
+          "name": "name2",
+          "val": 10
+        }
+        
+    ],
+    "links": [
+        {
+            "source": "id1",
+            "target": "id2"
+        }
+       
+    ]
+}
+	var myGraph = ForceGraph();
+	myGraph(document.getElementById("grph"))
+		.graphData(mydata);
+	
+	</script>
+</div>	
+
+{% endblock %}

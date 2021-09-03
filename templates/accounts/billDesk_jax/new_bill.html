@@ -1,0 +1,280 @@
+{% load static %}
+				
+<style>
+				
+
+
+</style>
+				<!-- Edit -->
+					<div class="Edit-page-job-code">
+						<div class="">
+						
+							
+							
+							<div class="bill-panel">
+								<table class="bill-screen">
+									<tbody>
+										<tr>
+											<td class="bill-scr-right">
+												<div class="bill-table-label">Invoice Information</div>
+												<div class="ips_n_ops">
+													<table class="w100">
+														<tbody>
+															<tr>
+																<td><b>Your Details</b></td>
+																<td></td>
+																<td></td>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>Company Name</td>
+																<td></td>
+																<td><input type="text" class="textinpbill"/></td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>Company Address</td>
+																<td></td>
+																<td><input type="text" class="textinpbill"/></td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>Company GST</td>
+																<td></td>
+																<td><input type="text" class="textinpbill"/></td>
+															</tr>
+															<tr>
+																<td><b>Client Details</b></td>
+																<td></td>
+																<td></td>
+																<td></td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>Client Name</td>
+																<td></td>
+																<td><input type="text" class="textinpbill"/></td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>Client Address</td>
+																<td></td>
+																<td><input type="text" class="textinpbill"/></td>
+															</tr>
+															<tr>
+																<td></td>
+																<td>Client GST</td>
+																<td></td>
+																<td><input type="text" class="textinpbill"/></td>
+															</tr>
+															<tr>
+																<td><b>Bill Type</b></td>
+																<td></td>
+																<td></td>
+																<td>
+																	<span id="gststatus_type">Non GST</span><br/>
+																	<span style="color:grey"> Fill GST details to generate a GST bill. </span>
+																</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+												<div class="bill-table-label">Service Components</div>
+												<div class="ips_n_ops">
+													<!-- bill maker -->
+														<table class="bill-make-det">
+															<thead id="bill-head-opp">
+																
+															</thead>
+															<tbody id="bill-list-opp" class="duple-inputs">
+																
+																
+															</tbody>
+														</table>
+													
+													
+												</div>
+												
+												<div class="bill-table-label">Billing Heads</div>
+												<div class="ips_n_ops">
+													
+														<table class="bill-make-det">
+															
+															<tbody class="duple-inputs-">
+																<tr>
+																	<td>Total</td>
+																	<td></td>
+																	<td></td>
+																	<td>1213543</td>
+																</tr>
+																<tr>
+																	<td>GST</td>
+																	<td>CGST</td>
+																	<td>9%</td>
+																	<td>546545</td>
+																</tr>
+																<tr>
+																	<td></td>
+																	<td>SGST</td>
+																	<td>9%</td>
+																	<td>546545</td>
+																</tr>
+																<tr>
+																	<td>Management Charges</td>
+																	<td></td>
+																	<td>10%</td>
+																	<td>546546</td>
+																	
+																</tr>
+																<tr>
+																	<td>Grand Total</td>
+																	<td></td>
+																	<td></td>
+																	<th>546546</th>
+																	
+																</tr>
+															</tbody>
+														</table>
+													
+													<!-- bill maker end-->
+												</div>
+												<div id="CREATEBILL">Create Invoice</div>
+											<td>
+											<td class="bill-scr-left">
+												<div class="biscreen">
+													<table class="">
+														<tbody>
+															<tr class="head-tools">
+																<td>heads</td>
+															</tr>
+															<tr class="bill-preview">
+																<td>preview</td>
+															</tr>
+														</tbody>
+													</table>
+												</div>
+											<td>
+										</tr>
+									</tbody>
+								</table>
+							</div>
+							
+							
+						</div>
+						
+					<script>
+					
+					function bill_html(){
+						
+						function bill_formula(){
+						
+							
+							
+						}
+						
+						if(erp.o.bill){
+							
+							var blist = erp.o.bill.items || [],
+							    bhead = erp.o.bill.heads || [],
+								btype = erp.o.bill.type || [],
+								bdisa = erp.o.bill.disabled || [];
+							
+							//HTML Appender
+							var l = blist.length;
+							var n = bhead.length,hed="<tr>",inp="<tr>";
+							
+							for(var k=0;k<n;k++){
+								hed=hed+'<th>'+bhead[k]+'</th>'
+								inp=inp+'<td><input class="bill_pins" name="'+bhead[k]+'" type="'+btype[k]+'" '+bdisa[k]+' /></td>';
+							}
+							hed=hed+"</tr>";
+							inp=inp+'<td><div id="insert_bitt_item_btn" class="addnew dashedbtn">Add</div></td></tr>';
+							$("#bill-head-opp").append(hed)
+							$("#bill-list-opp").append(inp)
+						
+							
+							
+							for(var i=0;i<l;i++){
+								var m = blist[i].length,
+								str = '<tr class="bill-items-list-1796" id="">';
+								for(var j=0;j<m;j++){
+									str=str+"<td>"+blist[i][j]+"</td>";
+								}
+								str=str+"</tr>"
+								$("#bill-list-opp").append(str)
+								
+							}
+							
+							
+						} // BILL Object is present and list is being appended...
+						
+						else{
+							
+							//console.log("hit");
+							erp.jax("json",{},"get","{% url 'accounts_jax_bill_info' %}",
+								function(e){
+										console.log(e);
+										erp.o.bill = e
+										bill_html();
+									},
+								function(e){
+										alert("Error!")
+									}); 
+						
+						} // Bill Object is being called...
+					
+					
+						
+					}
+					bill_html()					
+					// object initiation
+					
+					// function
+					/*
+					
+					first choose bill template, inititally default;
+					then create bill page using stored template information.
+					
+					*/
+				
+					/* Bill change and customizations starts */
+					var object=[];
+					erp.myObject($('#insert_bitt_item_btn'),"Bill insert item initiated",function(b,t){
+						
+							
+							b.click(function(){
+								var all_ok=true;
+								
+								var _cons = function(a){
+								
+									
+									
+								}
+								 
+								($("#bill_inps").find("input")).each(function(){
+									if( $(this).val()==""){
+										alert("Please input in all fields!")
+										all_ok=false;
+									}
+								})
+								if(all_ok){
+									console.log("ALL OK")
+									var l=heads.length,temp=heads;
+									
+									for(i=0;i<l;i++){
+										
+									}
+									
+									
+								}
+							});
+						
+					})
+					/* Bill change and customizations starts */	
+					
+					
+					
+					</script>
+					</div>
+				<!-- Edit End -->
